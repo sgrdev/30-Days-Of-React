@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>30 Days Of React Challenge</title>
+  </head>
+
+  <body>
+    <div class="root"></div>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      //Exercises: Inline Style
+      // Create a style object for the main JSX
+      const mainStyle = {
+        backgroundColor: '#f0f0f0',
+        border: '2px solid black',
+        padding: '20px',
+        fontFamily: 'Arial, sans-serif',
+      };
+
+      // Create a style object for the footer and app JSX
+      const footerStyle = {
+        backgroundColor: 'gray',
+        color: '#fff',
+        textAlign: 'center',
+        padding: '10px',
+        position: 'relative',
+        bottom: '0',
+        width: '100%',
+        fontFamily: 'Arial, sans-serif',
+      };
+
+      const appStyle = {
+        display: 'flex',
+        flexDirection: 'column',
+        width: '100%',
+        textAlign: 'center',
+        color: '#333',
+        fontFamily: 'Arial, sans-serif',
+        margin: '0',
+        padding: '0',
+      };
+
+      // Practice how to make JSX element and injecting dynamic data(string, number, boolean, array, object)
+
+      const hobby = 'Gaming';
+      const age = 20;
+      const isStudent = true;
+      const skills = ['react', 'javascript'];
+      const guardian = {
+        name: 'Sabita',
+        job: 'house wife',
+      };
+
+      // 1 What is a JSX element?
+      // = jsx elements is a building block in jsx which is used in react to define the structure of the ui
+      // they are actually javascript objects.
+      const rootElement = document.querySelector('.root');
+      //2 Write your name in a JSX element and store it in a name variable
+      const name = <h1>Sagar</h1>;
+
+      //3 Write a JSX element which displays your full name, country, title, gender, email, phone number. Use h1 for the name and p for the rest of the information and store it in a user variable
+      const user = (
+        <div style={mainStyle}>
+          <h1>Sagar</h1>
+          <p>Country: Nepal</p>
+          <p>Title: Software Developer</p>
+          <p>Gender: Male</p>
+          <p>Email: sagar@example.com</p>
+          <p>Phone Number: 123-456-8888</p>
+          <p>Hobby: {hobby}</p>
+          <p>Age: {age}</p>
+
+          <ul
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              padding: '0px',
+            }}
+          >
+            <p>Skills</p>
+            {skills.map((skill) => (
+              <li style={{ listStyle: 'none' }} key={skill}>
+                {skill}
+              </li>
+            ))}
+          </ul>
+
+          <p>Guardian:{guardian.name}</p>
+          <p>Job: {guardian.job}</p>
+        </div>
+      );
+
+      //4 Write a footer JSX element
+      const footer = (
+        <footer style={footerStyle}>
+          <p>© 2024 ABCcompany. All Rights Reserved.</p>
+          <p>
+            contact us at <a href="">sagar@example.com</a>
+          </p>
+        </footer>
+      );
+
+      const app = (
+        <div style={appStyle}>
+          {user}
+          {footer}
+        </div>
+      );
+
+      ReactDOM.render(app, rootElement);
+    </script>
+  </body>
+</html>
